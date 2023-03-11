@@ -1,0 +1,30 @@
+###
+POST http://localhost:4000/user-api/register
+Content-Type: application/json
+
+{
+    
+    "email":"swathi@westagilelabs.com",
+    "user_name":"swathi",
+    "password":"swathi"
+
+}
+
+###
+POST http://localhost:4000/user-api/login 
+Content-Type: application/json
+
+{
+    "email":"swathi@westagilelabs.com",
+    "password":"swathi"
+}
+
+###
+PUT http://localhost:4000/user-api/user/role
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJpYXQiOjE2Nzg1MzY1ODgsImV4cCI6MTY3ODU1NDU4OH0.GmJZpIWP1rOGyf_kht4N1ihCg3kvlHtOMZQaTYTa8bs
+
+{
+    "email":"swathi@westagilelabs.com",
+    "role":"GDO head"
+}
