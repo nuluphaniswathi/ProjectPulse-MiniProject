@@ -1,12 +1,14 @@
 //importing sequelize from database
 const sequelize=require("../db.config");
+
 //importing datatypes from sequelize
 const {DataTypes}=require("sequelize");
+
 //creating projectconcerns model
 exports.project_concernsModel=sequelize.define("project_concerns",{
     project_id:{
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type:DataTypes.INTEGER
+    
     },
     concern_desc:{
         type:DataTypes.STRING,
@@ -29,7 +31,7 @@ exports.project_concernsModel=sequelize.define("project_concerns",{
         allowNull:false
     },
     status:{
-        type:DataTypes.STRING,
+        type:DataTypes.BOOLEAN,
         allowNull:false
 
     },

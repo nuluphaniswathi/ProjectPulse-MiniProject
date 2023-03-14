@@ -1,14 +1,16 @@
+//import jwt web token
 const jwt=require("jsonwebtoken");
 
+//configure dotenv
 require('dotenv').config();
 
 
 const verifyToken=(req,res,next)=>{
     console.log("verify token")
     //token verification logic
-    //get bearer token from headers of req
+    //get bearer token from headers of request object
     let bearerToken=req.headers.authorization;
-    console.log(bearerToken);
+    //console.log(bearerToken);
     //check existance of bearer token
     if(bearerToken===undefined)
     {
@@ -20,10 +22,11 @@ const verifyToken=(req,res,next)=>{
         let token=bearerToken.split(" ")[1];//[bearer,token]
        
         try{
-             //decode the token
+             //decode the token using jwt verify method
         let decoded=jwt.verify(token,process.env.SECRET_KEY);
+
         next()
-        res.status(200).send({message:"authenticated"})
+        //res.status(200).send({message:"authenticated"})
         }
         catch(err)
         {

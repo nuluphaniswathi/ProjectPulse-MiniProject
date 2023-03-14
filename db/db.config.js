@@ -1,10 +1,12 @@
+//import sequelize
 const {Sequelize}=require("sequelize")
-//it is a constructor we can use it by instantiating it
+
+//configure dotenv by importing dotenv
 require("dotenv").config();
-//create instance
+
+//create instance for sequelize
 const sequelize=new Sequelize(
     process.env.DB_NAME,
-    //"new","wal","WESTAGILELABS2023",
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
@@ -12,7 +14,9 @@ const sequelize=new Sequelize(
         dialect:"mysql"
     }
 );
-//create tables for all models
+
+//create tables using sync() for all models
 sequelize.sync();
-//export
+
+//export sequelize
 module.exports=sequelize;

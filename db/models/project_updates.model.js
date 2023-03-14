@@ -1,12 +1,13 @@
 //importing sequelize
 const sequelize=require("../db.config");
+
 //importing datatypes
 const {DataTypes}=require("sequelize");
+
 //creating projectupdates model
 exports.project_updatesModel=sequelize.define("project_updates",{
     project_id:{
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type:DataTypes.INTEGER
     },
     Date:{
         type:DataTypes.DATE,

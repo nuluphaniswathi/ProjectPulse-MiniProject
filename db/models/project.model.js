@@ -1,11 +1,14 @@
 //importing sequelize from db
 const sequelize=require("../db.config");
+
 //importing datatypes from sequelize
 const {DataTypes}=require("sequelize");
+
 //creating project model
 exports.ProjectModel=sequelize.define("projects",{
     project_id:{
         type:DataTypes.INTEGER,
+        autoIncrement:true,
         primaryKey:true
     },
     project_name:{
@@ -24,13 +27,12 @@ exports.ProjectModel=sequelize.define("projects",{
         type:DataTypes.STRING,
         allowNull:false
     },
-    project_start_date:{
+    start_date:{
         type:DataTypes.DATE,
         allowNull:false
     },
-    project_end_date:{
-        type:DataTypes.DATE,
-        allowNull:false
+    end_date:{
+        type:DataTypes.DATE
     },
     overall_project_fitness_indicator:{
         type:DataTypes.STRING,

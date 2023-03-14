@@ -1,30 +1,247 @@
-###
+###Endpoint for user registration
 POST http://localhost:4000/user-api/register
 Content-Type: application/json
 
 {
     
-    "email":"swathi@westagilelabs.com",
-    "user_name":"swathi",
-    "password":"swathi"
+    "email":"madhavi@westagilelabs.com",
+    "user_name":"madhavi",
+    "password":"madhavi"
 
 }
 
-###
+###Endpoint for user login
 POST http://localhost:4000/user-api/login 
 Content-Type: application/json
 
 {
-    "email":"swathi@westagilelabs.com",
-    "password":"swathi"
+    "email":"prashanth@westagilelabs.com",
+    "password":"prashanth"
 }
 
-###
-PUT http://localhost:4000/user-api/user/role
+###EndPoint for forget password
+POST http://localhost:4000/user-api/forget-password
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJpYXQiOjE2Nzg1MzY1ODgsImV4cCI6MTY3ODU1NDU4OH0.GmJZpIWP1rOGyf_kht4N1ihCg3kvlHtOMZQaTYTa8bs
 
 {
-    "email":"swathi@westagilelabs.com",
-    "role":"GDO head"
+  "email":"n170210@rguktn.ac.in"
 }
+
+###Endpoint for reset password
+POST http://localhost:4000/user-api/reset-password/email/n170210@rguktn.ac.in
+Content-Type: application/json
+
+{
+    "otp":423018,
+    "password":"NPHANISWATHI"
+}
+
+
+###Assigning role to user by superadmin
+PUT http://localhost:4000/superadmin-api/user/role
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJpYXQiOjE2Nzg3MzAzODUsImV4cCI6MTY3OTI0ODc4NX0.Om13h-JnXxM0OgxQcTT1ti87x36-iEBlnz0dd_APuwg
+
+{
+    "email":"mohan@westagilelabs.com",
+    "role":"Gdo head"
+}
+
+###super admin get the users data
+GET http://localhost:4000/superadmin-api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJpYXQiOjE2Nzg2ODQ2ODMsImV4cCI6MTY3OTExNjY4M30.Bdtd_pQHB0cbFCzjLZ4tnvmSFK-7t-91RDcdssoywsQ
+
+###Super admin get the data whose role assigned to null
+GET http://localhost:4000/superadmin-api/users/role
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJpYXQiOjE2Nzg2ODQ2ODMsImV4cCI6MTY3OTExNjY4M30.Bdtd_pQHB0cbFCzjLZ4tnvmSFK-7t-91RDcdssoywsQ
+
+###admin create project
+POST http://localhost:4000/admin-api/create-project 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg3MzIzMjEsImV4cCI6MTY3OTI1MDcyMX0.fYDdS0Hm3P7RlWgTM2qi8SD4ojHIQTCLCfh64RhpbYk
+
+{
+    //"project_id" :1,
+    "project_name":"project 2",
+    "client":"vamsi",
+    "client_account_manager" :"ramana",
+    "status_of_project":"paused",
+    "start_date" :"2023/01/2",
+    "end_date" :"2023/09/19",
+    "overall_project_fitness_indicator":"green",
+    "Domain":"fullstack",
+    "type_of_project":"Development",
+    "team_size":3,
+    "GdoHeadEmail":"prashanth@westagilelabs.com",
+    "project_Manager_Email":"prasu@westagilelabs.com"
+}
+
+###admin get all projects
+GET http://localhost:4000/admin-api/admin/portfolio-dashboard 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg3MzIzMjEsImV4cCI6MTY3OTI1MDcyMX0.fYDdS0Hm3P7RlWgTM2qi8SD4ojHIQTCLCfh64RhpbYk
+
+###admin can read specific projects
+GET http://localhost:4000/admin-api/admin/portfolio-dashboard/projectId/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo
+
+###admin can get last two weeks project update details
+GET http://localhost:4000/admin-api/admin/projectupdate/projectId/2 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo
+
+
+###admin update project details
+PUT http://localhost:4000/admin-api/admin/projectId/1 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo
+
+
+{
+    "project_id" :1,
+    "project_name":"project 1",
+    "client":"satish",
+    "client_account_manager" :"ramana",
+    "status_of_project":"completed",
+    "start_date" :"2023/01/1",
+    "end_date" :"2023/09/9",
+    "overall_project_fitness_indicator":"green",
+    "Domain":"fullstack",
+    "type_of_project":"Development",
+    "team_size":4,
+    "GdoHeadEmail":"mohan@westagilelabs.com",
+    "project_Manager_Email":"vimala@westagilelabs.com"
+
+}
+
+
+
+###Admin delete a project
+DELETE http://localhost:4000/admin-api/admin/projectId/1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo
+
+
+
+###GDO-HEAD-APIS
+###GDO-head adds employees to projects
+POST http://localhost:4000/gdoHead-api/team 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg3MzMwNTYsImV4cCI6MTY3OTI1MTQ1Nn0.YrLn8VL6giDWawhQKXProN7OxlfSIsQjkNnqLyiiJ90
+
+{
+    "project_id":2,
+    "emp_id":12,
+    "emp_name":"vasanthi",
+    "role":"fullstack",
+    "start_date":"2022/01/15",
+    "end_date":"2023/09/8",
+    "status":"Active",
+    "billing_status":"billed",
+    "exposed_to_customer":true,
+    "allocation_type":"permanent"
+}
+
+###GDO-head raises a resourcing request
+POST http://localhost:4000/gdoHead-api/projectId/2/resourcing-request 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg2ODcxOTgsImV4cCI6MTY3OTExOTE5OH0.Cv-PaqSfK7ByKrFKwwTzbasIGM3XFeWbFMpQO5W5qoQ
+
+{
+    "GDOEmail":"prashanth@westagilelabs.com",
+    "project_id":"2",
+    "request_desc":"need extra two resources"
+}
+
+###get project detail under specific gdo
+GET http://localhost:4000/gdoHead-api/projects/prashanth@westagilelabs.com 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg2MTA1ODQsImV4cCI6MTY3OTA0MjU4NH0.ptGkRJ8fp1rC8iGj0riZ0AqhMBzPxg69IccCwQKP4Jw
+
+###get specific project details under gdo
+GET http://localhost:4000/gdoHead-api/projectId/2/gdoEmail/prashanth@westagilelabs.com 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg2MTA1ODQsImV4cCI6MTY3OTA0MjU4NH0.ptGkRJ8fp1rC8iGj0riZ0AqhMBzPxg69IccCwQKP4Jw
+
+###gdo can get last two weeks project update details
+GET http://localhost:4000/gdoHead-api/projectupdate/lasttwoweeks/projectId/2 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg2MTA1ODQsImV4cCI6MTY3OTA0MjU4NH0.ptGkRJ8fp1rC8iGj0riZ0AqhMBzPxg69IccCwQKP4Jw
+
+###gdo update team member details
+PUT http://localhost:4000/gdoHead-api/teamcomposition/updateteam/projectId/7/Empid/22
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg3MDQ5NzksImV4cCI6MTY3OTEzNjk3OX0.UwbNRnrgr9jFOnuz3wmXuVWFnY6iW4myb44SsFPz1_k
+
+{
+    "project_id":7,
+    "emp_id":22,
+    "emp_name":"manasa",
+    "role":"Devops",
+    "start_date":"2022/01/15",
+    "end_date":"2023/09/8",
+    "status":"Active",
+    "billing_status":"billed",
+    "exposed_to_customer":true,
+    "allocation_type":"temporary"
+}
+
+###gdo can delete the team member from project under him
+DELETE http://localhost:4000/gdoHead-api/teamcomposition/deleteteam/projectId/7/Empid/22 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg3MDcyMDYsImV4cCI6MTY3OTEzOTIwNn0.UL8epNyPVXxqJS3gcrx8zhkRVUyIjCOwMSHHHF1haGA
+
+
+###Project manager creates project_updates_details
+POST http://localhost:4000/project-manager-api/projectId/1/project-update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NjEzNjM1LCJleHAiOjE2NzkwNDU2MzV9.HuBG0nUOXzrBcZ9LW_WFdNuq6q2Udms6YIeLJ769Psc
+
+{
+    "project_id":1,
+    "Date":"2023/01/20",
+    "status_update":"project is in progress ",
+    "schedule_status":"red",
+    "resourcing_status":"amber",
+    "quality_status":"red",
+    "client_inputs":true
+}
+
+
+###Project manager raise project concerns
+POST http://localhost:4000/project-manager-api/projectId/1/project-concern-raise 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NjEzNjM1LCJleHAiOjE2NzkwNDU2MzV9.HuBG0nUOXzrBcZ9LW_WFdNuq6q2Udms6YIeLJ769Psc
+
+{
+    "project_id":1,
+    "concern_desc":"concern raised desc",
+    "raised_by":"projectmanager",
+    "raised_on_date":"2023/01/20",
+    "severity":"medium",
+    "concern_raised_internally":"yes",
+    "status":true,
+    "mitigated_on":"2023/01/20"
+}
+
+###GET projects under specific project manager
+GET http://localhost:4000/project-manager-api/projects/portfolio-dashboard/projectManagerEmail/vimala@westagilelabs.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NjQxNTQ3LCJleHAiOjE2NzkwNzM1NDd9.dFSZr5ngibAZDjM4b04-UUQrEyDEbVkOsnDYJOhs6L0
+
+###projectmanager can get last two weeks project update details
+GET http://localhost:4000/project-manager-api/projectupdate/lasttwoweeks/projectId/2 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NjQxNTQ3LCJleHAiOjE2NzkwNzM1NDd9.dFSZr5ngibAZDjM4b04-UUQrEyDEbVkOsnDYJOhs6L0
+
+
+
+###Project manager can update the project update details
+PUT http://localhost:4000/project-manager-api/projects/update-projectupdate/projectManagerEmail/jayram@westagilelabs.com
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NzAxMzMyLCJleHAiOjE2NzkxMzMzMzJ9.dH-eIBb-C2h3cIH7SX8dV4v4EcV0VBeafxIfoADfggE
+
+{
+    "project_id":2,
+    "Date":"2023/01/20",
+    "status_update":"project completed ",
+    "schedule_status":"red",
+    "resourcing_status":"amber",
+    "quality_status":"red",
+    "client_inputs":false
+}
+
+###Project manager can delete the project update details
+DELETE http://localhost:4000/project-manager-api/projects/delete-projectupdates/projectId/2 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicHJvamVjdCBtYW5hZ2VyIiwiaWF0IjoxNjc4NzAxMzMyLCJleHAiOjE2NzkxMzMzMzJ9.dH-eIBb-C2h3cIH7SX8dV4v4EcV0VBeafxIfoADfggE

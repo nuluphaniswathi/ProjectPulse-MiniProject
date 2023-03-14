@@ -1,7 +1,9 @@
 //importing sequelize from db
 const sequelize=require("../db.config");
+
 //importing datatypes from sequelize
 const {DataTypes}=require("sequelize");
+
 //creating resourcing_request model
 exports.Resourcing_requestModel=sequelize.define("resourcing_request",{
     

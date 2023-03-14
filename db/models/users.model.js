@@ -1,7 +1,9 @@
 //importing sequelize from database
 const sequelize=require("../db.config");
+
 //importing datatypes from sequelize
 const {DataTypes}=require("sequelize");
+
 //creating user model
 exports.UserModel=sequelize.define("user",{
     email:{
@@ -30,11 +32,11 @@ exports.UserModel=sequelize.define("user",{
         allowNull:false
     },
     role:{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        defaultValue:null
 
     }
 },{
     timestamps:false,
     freezeTableName:true
 })
-//sequelize.sync();

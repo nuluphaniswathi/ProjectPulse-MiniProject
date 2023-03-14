@@ -20,25 +20,28 @@ app.use(exp.json());
 
 //importing sequelize from db.config.js
 const sequelize=require("./db/db.config.js");
-//const StudentApp = require("./Routes/student.route.js");
 
 //establlishing db connection using sequelize
 sequelize.authenticate()
 .then(()=>console.log("DB conection is suceess"))
 .catch(err=>console.log("err in DB connection",err))
-//body parse
-app.use(exp.json());
 
 
 
-//importing userapi
+//importing userapi,superadminapp,adminapp,gdoheadapp.projectmanagerapp
 const userApp=require("./routes/users.route")
-//middleware for route
+const SuperadminApp=require("./routes/superadmin.route")
+const adminApp=require("./routes/admin.route")
+const GdoHeadApp=require("./routes/gdohead.route")
+const ProjectManagerApp=require("./routes/projectmanager.route")
+
+
+//middlewares for route
 app.use("/user-api",userApp);
-//importing superadmin api
-const adminApp=require("./routes/super-admin.route")
-//middleware for route
-app.use("/admin-api",adminApp)
+app.use("/admin-api",adminApp);
+app.use("/gdoHead-api",GdoHeadApp);
+app.use("/project-manager-api",ProjectManagerApp)
+app.use("/superadmin-api",SuperadminApp)
 
 
 

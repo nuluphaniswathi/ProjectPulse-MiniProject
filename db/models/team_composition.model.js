@@ -2,11 +2,11 @@
 const sequelize=require("../db.config");
 //importing datatypes
 const {DataTypes}=require("sequelize");
+
 //create team_composition model
 exports.team_CompositionModel=sequelize.define("team_composition",{
     project_id:{
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type:DataTypes.INTEGER
     },
     emp_id:{
         type:DataTypes.INTEGER,
@@ -51,4 +51,3 @@ exports.team_CompositionModel=sequelize.define("team_composition",{
     timestamps:false,
     freezeTableName:true
 })
-//sequelize.sync();

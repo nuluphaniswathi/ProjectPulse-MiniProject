@@ -1,22 +1,30 @@
 //import express module
 const exp=require("express");
+
 //creating express mini router
 const userApp=exp.Router();
-//importing verify token
-let verifyToken=require('../middleware/verifyToken');
+
+
 //bodyparser
 userApp.use(exp.json())
-//importing controllers
-const {register,login,assignRole}=require("../controllers/user.controller")
-//create routes using get,post,put
-//testApp.get("/test",);
+
+//import user controllers
+const {register,login,forgetpassword,resetPassword}=require("../controllers/user.controller")
 
 
-//register the user
+
+//route to register the user
 userApp.post("/register",register);
-//login user
+
+//route for login user
 userApp.post("/login",login);
-//asign role
-userApp.put("/user/role",verifyToken,assignRole)
-//export testapp
+
+//route for forgetpassoword 
+userApp.post("/forget-password",forgetpassword)
+
+//route for reset password route
+userApp.post("/reset-password/email/:email",resetPassword)
+
+
+//export userapp
 module.exports=userApp
