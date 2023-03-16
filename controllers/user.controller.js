@@ -89,8 +89,8 @@ exports.resetPassword=expressAsyncHandler(async(req,res)=>{
 //register a user
 exports.register=expressAsyncHandler(async(req,res)=>{
    //check if employee existed or not
-    let Checkemployee=await EmployeeModel.findOne({where:{emp_name:req.body.user_name}})
-    if(Checkemployee==undefined){
+    let checkEmployee=await EmployeeModel.findOne({where:{emp_name:req.body.user_name}})
+    if(checkEmployee==undefined){
       res.status(401).send({message:"no access to register"});
     }
      //check if user already existed
@@ -124,19 +124,20 @@ exports.login=expressAsyncHandler(async(req,res)=>{
    console.log(user.password);
     let result=await bcryptjs.compare(password,user.password)
     console.log(result);
+    //if passwords not matched
     if(result==false){
         res.status(404).send({message:"Invalid password"})
     }
     else{
         //if role not assigned
-        if(user.role==null){
+        if(user.dataValues.role==null){
             res.status(401).send({message:"Unauthorized access..Please contact your super admin for role assignment"})
-
         }
         //if role is assigned
         else{
+          console.log(user.email);
             //create jwt token and send to client
-            let signedToken=jwt.sign({role:user.role},process.env.SECRET_KEY||"",{expiresIn:"6d"})
+            let signedToken=jwt.sign({role:user.role,email:user.email},process.env.SECRET_KEY||"",{expiresIn:"6d"})
             //remove password
             delete user.password
             //send jwt response

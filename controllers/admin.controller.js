@@ -57,8 +57,10 @@ exports.createProject=expressAsyncHandler(async(req,res)=>{
 })
 
 //get all projects under admin
-exports.ReadAllProjects=expressAsyncHandler(async(req,res)=>{
-    let Allprojects=await ProjectModel.findAll();
+exports.getAllProjects=expressAsyncHandler(async(req,res)=>{
+    let Allprojects=await ProjectModel.findAll({attributes:{
+      exclude:["team_size"]
+    }});
     if(Allprojects.length==0){
         res.status(400).send({message:"no projects"})
     }
@@ -176,4 +178,13 @@ exports.lastTwoWeeksUpdates=expressAsyncHandler(async(req,res)=>{
     }
   }})
   res.status(200).send({message:"last two weeks updates details",payload:projectupdates})
+})
+
+//admin can get resourcing requests
+exports.getResourcingRequest=expressAsyncHandler(async(req,res)=>{
+ let  getResourceRequestData=await Resourcing_requestModel.findAll({attributes:{
+  exclude:["id"]
+ } 
+ });
+ res.send({message:"Resourcing request data",payload:getResourceRequestData});
 })

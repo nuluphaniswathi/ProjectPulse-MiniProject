@@ -7,9 +7,6 @@ const app=exp();
 //import dotenv and configure
 require("dotenv").config();
 
-//creating to port number
-const port=process.env.PORT||4000;
-app.listen(port,()=>console.log("port is running on 4000"));
 
 //bodyparser
 app.use(exp.json());
@@ -57,3 +54,4 @@ app.use((err,req,res,next)=>{
     res.send({"errMsg":err.message});
 })
 
+module.exports=app
