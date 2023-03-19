@@ -12,7 +12,7 @@ test("route for getting all users data by super admin",async()=>{
     // expect(res.body.payload[0]).toHaveProperty("role");
     expect(res.status).toBe(200);
 });
-
+//login
 test("route for login",async()=>{
     const res= await request(app).post("/user-api/login ").send({
     "email":"pramod@westagilelabs.com",
@@ -35,14 +35,14 @@ test("route for getting all projects data by  admin",async()=>{
     expect(res.status).toBe(200);
 
 });
-
+//Admin can see the raising resource request
 test("Admin can see the raising resource request",async()=>{
     const res=await request(app).get("/admin-api/admin/resourcerequest")
     .set('Authorization','bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo");
     console.log("payload.....",res.body.payload);
     expect(res.status).toBe(200);
 });
-
+//Admin can see the raising resource request
 test("Admin can see the raising resource request",async()=>{
     const res=await request(app).delete("/admin-api/admin/projectId/1")
     .set('Authorization','bearer ' + 
@@ -51,15 +51,15 @@ test("Admin can see the raising resource request",async()=>{
     expect(res.status).toBe(200);
 });
 
-
-test("Admin can see the raising resource request",async()=>{
+//"Admin can delete the raising resource request
+test("Admin can delete the raising resource request",async()=>{
     const res=await request(app).delete("/admin-api/admin/projectId/1")
     .set('Authorization','bearer ' + 
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2Nzg2ODU0NzYsImV4cCI6MTY3OTExNzQ3Nn0.G4wOPmTZgblF6L24GGUzjjHpM70rq82oxYXL1pW2RFo")
     console.log("payload.....",res.body.payload);
     expect(res.status).toBe(200);
 });
-
+//Project manager can update the project update details
 test("Project manager can update the project update details",async()=>{
     const res=await request(app).put("/project-manager-api/projects/update-projectupdate/projectManagerEmail/jayram@westagilelabs.com").send({
         "project_id":2,
@@ -75,21 +75,21 @@ test("Project manager can update the project update details",async()=>{
     console.log("payload.....",res.body.payload);
     expect(res.status).toBe(401);
 });
-
+//get project detail under specific gdo
 test("get project detail under specific gdo",async()=>{
     const res=await request(app).get("/gdoHead-api/projects/divya@westagilelabs.com")
     .set('Authorization','bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ2RvaGVhZCIsImlhdCI6MTY3ODc5Njc2MCwiZXhwIjoxNjc5MzE1MTYwfQ.dlNTBTEcqL2jKnqzdryPv_n83nyxfbdjxX9oz6cmmLo");
     console.log("payload.....",res.body.payload);
     expect(res.status).toBe(200);
 });
-
+//get specific project details under gdo
 test("get specific project details under gdo",async()=>{
     const res=await request(app).get("/gdoHead-api/projectId/5/gdoEmail/divya@westagilelabs.com")
     .set('Authorization','bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ2RvaGVhZCIsImlhdCI6MTY3ODc5Njc2MCwiZXhwIjoxNjc5MzE1MTYwfQ.dlNTBTEcqL2jKnqzdryPv_n83nyxfbdjxX9oz6cmmLo");
     console.log("payload.....",res.body.payload);
     expect(res.status).toBe(200);
 });
-
+//gdo can get last two weeks project update details
 test("gdo can get last two weeks project update details",async()=>{
     const res=await request(app).get("/gdoHead-api/projectupdate/lasttwoweeks/projectId/3 ")
     .set('Authorization','bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiR2RvIGhlYWQiLCJpYXQiOjE2Nzg2MTA1ODQsImV4cCI6MTY3OTA0MjU4NH0.ptGkRJ8fp1rC8iGj0riZ0AqhMBzPxg69IccCwQKP4Jw");
